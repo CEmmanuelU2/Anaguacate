@@ -1,0 +1,518 @@
+/* ==========================================================================
+   === ESTILOS GENERALES DEL DOCUMENTO ===
+   ========================================================================== */
+
+/* Configuración global del body: 
+   - Elimina márgenes por defecto
+   - Añade padding superior para compensar header fijo
+   - Define tipografía base y color de fondo */
+body {
+  margin: 0;
+  padding-top: 80px; /* Evita que el contenido quede debajo del header */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* ==========================================================================
+   === HEADER PRINCIPAL FIJO (RESPONSIVE) ===
+   ========================================================================== */
+
+/* Cabecera fija en la parte superior:
+   - Ocupa ancho completo
+   - Fondo degradado
+   - Flexbox para distribución
+   - Sombras para efecto de relieve
+   - Alta prioridad en apilado (z-index) */
+.Inicio-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(135deg, #4a7c30, #2e4f14);
+  display: flex;
+  flex-wrap: wrap; /* Permite que elementos bajen en pantallas pequeñas */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  font-weight: 600;
+  gap: 10px;
+}
+
+/* ==========================================================================
+   === LOGO Y TÍTULO DE LA ASOCIACIÓN ===
+   ========================================================================== */
+
+/* Contenedor de logo + título:
+   - Flex horizontal
+   - Evita cortes extraños del texto
+   - Evita que se rompa en varias líneas */
+.logo-title {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+  overflow-wrap: break-word;
+}
+
+/* Logo pequeño alineado al título:
+   - Tamaño fijo
+   - Sombra para resaltar
+   - No se reduce al ajustar ventana */
+.logo-small {
+  width: 50px;
+  margin-right: 10px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4));
+  flex-shrink: 0;
+}
+
+/* Estilo del título principal */
+.logo-title h1 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e6f2d4;
+  text-shadow: 1px 1px 2px #284018;
+  white-space: nowrap; /* No permite salto de línea */
+  user-select: none;   /* Evita selección del texto */
+  margin: 0;
+}
+
+/* Subtítulo bajo el título principal */
+.subtitle {
+  font-size: 0.8rem;
+  color: #dbe7b6;
+  margin: 2px 0 0;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   === REDES SOCIALES HEADER (RESPONSIVE) ===
+   ========================================================================== */
+
+/* Contenedor de iconos/redes sociales:
+   - Flexbox horizontal
+   - Espaciado entre elementos
+   - Ajustable y adaptable a pantallas pequeñas */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 150px;
+}
+
+/* Enlaces individuales dentro de redes sociales */
+.social-links a {
+  color: #c9e4a2;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+/* Hover en iconos/redes */
+.social-links a:hover {
+  color: #f9f871;
+  text-decoration: underline;
+}
+
+/* Texto de correo electrónico en header */
+.email {
+  color: #d3e9b9;
+  font-size: 0.9rem;
+}
+
+/* Imagen de usuario (avatar) */
+.user {
+  width: 38px;
+  border-radius: 50%;
+  background: #d4e7c1;
+  padding: 4px;
+  box-shadow: inset 0 0 5px #a2b880;
+}
+
+/* ==========================================================================
+   === MENÚ DESPLEGABLE PERFIL ===
+   ========================================================================== */
+
+.profile-container {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Caja desplegable del menú de perfil */
+.profile-menu {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  list-style: none;
+  z-index: 1001;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Elementos del menú */
+.profile-menu li {
+  margin: 8px 0;
+}
+
+/* Enlaces dentro del menú */
+.profile-menu li a {
+  text-decoration: none;
+  color: #375e12;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+/* Hover en enlaces del menú */
+.profile-menu li a:hover {
+  color: #4a7c30;
+}
+
+/* Estado activo del avatar */
+.user.active {
+  box-shadow: 0 0 10px 2px #a2ff7a;
+}
+
+/* ==========================================================================
+   === BOTÓN HAMBURGUESA ===
+   ========================================================================== */
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #dbe7b9;
+  cursor: pointer;
+  display: none;
+  transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   === MENÚ RESPONSIVE PARA MÓVILES ===
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Muestra el botón hamburguesa */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Oculta las redes sociales en versión escritorio */
+  .social-links.desktop {
+    display: none;
+  }
+
+  /* Redes sociales en menú móvil */
+  .social-links.mobile {
+    flex-direction: column;
+    background-color: #2e4f14;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    color: #d3e9b9;
+    font-weight: 600;
+    gap: 12px;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  /* Animación desplegable */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-15%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+/* ==========================================================================
+   === SECCIÓN PRINCIPAL (LOGO GRANDE) ===
+   ========================================================================== */
+
+/* Contenedor principal del logo grande y posibles textos
+   - Centrado vertical y horizontal
+   - Columna para que el logo y texto estén uno sobre otro */
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 40px;
+}
+
+/* Logo principal de gran tamaño */
+.logo-large {
+  width: 200px;
+  margin-bottom: 30px;
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+/* ==========================================================================
+   === MENÚ INFERIOR DE NAVEGACIÓN (FOOTER) ===
+   ========================================================================== */
+
+/* Barra inferior de navegación:
+   - Fondo verde oscuro
+   - Flex para centrar y distribuir enlaces
+   - Espaciado uniforme
+   - Bordes inferiores redondeados */
+.footer-menu {
+  background: #3b6d1f;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 14px 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+  z-index: 900;
+}
+
+/* Enlaces del menú inferior */
+.footer-menu a {
+  color: #e6f2d4;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* Hover en enlaces del footer */
+.footer-menu a:hover {
+  color: #f9f871;
+}
+
+/* ==========================================================================
+   === TESTIMONIOS ===
+   ========================================================================== */
+
+/* Sección de testimonios:
+   - Fondo claro
+   - Bordes redondeados
+   - Sombra ligera
+   - Margen y padding para respiro visual */
+.testimonios {
+  padding: 2.5rem 2rem;
+  background-color: #fafaf4;
+  border-top: 3px solid #c4d6a7;
+  max-width: 1250px;
+  margin: 50px auto 80px;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Título de la sección testimonios */
+.testimonios .titulo {
+  text-align: center;
+  color: #375e12;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px #dbe7b6;
+}
+
+/* Contenedor en grid para los testimonios */
+.lista-testimonios {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Caja individual de testimonio */
+.testimonio {
+  background-color: #fffef8;
+  border: 1px solid #d0dd9b;
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 3px 8px rgba(95, 122, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto al pasar el mouse */
+.testimonio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(74, 124, 48, 0.3);
+}
+
+/* Imagen del testimonio */
+.imagen-testimonio {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Mantiene proporción cuadrada */
+  object-fit: cover;
+  object-position: top;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 3px 4px rgba(71, 110, 28, 0.3));
+}
+
+/* Texto del testimonio */
+.texto {
+  font-size: 1rem;
+  color: #3b3b1c;
+  margin-bottom: 0.7rem;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+/* Nombre del autor del testimonio */
+.autor {
+  font-size: 0.9rem;
+  color: #6e7b3d;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   === FORMULARIO DE CONTACTO ===
+   ========================================================================== */
+
+/* Contenedor general del bloque de contacto:
+   - Fondo claro
+   - Sombra suave
+   - Diseño responsive con flexbox */
+.contact-container {
+  max-width: 1100px;
+  margin: 50px auto 80px;
+  padding: 2rem 1.5rem;
+  background-color: #fafaf4;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* Bloque con información de contacto */
+.contact-info {
+  flex: 1 1 320px;
+}
+
+/* Título dentro de la info de contacto */
+.contact-info h1 {
+  font-size: 2rem;
+  color: #375e12;
+  margin-bottom: 1rem;
+}
+
+/* Texto descriptivo */
+.contact-info p {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: #3b3b1c;
+}
+
+/* Bloque con el formulario */
+.contact-form {
+  flex: 1 1 450px;
+}
+
+/* Título del formulario */
+.contact-form h2 {
+  font-size: 1.8rem;
+  color: #375e12;
+  margin-bottom: 1.5rem;
+}
+
+/* Grupo de campos del formulario */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.3rem;
+}
+
+/* Etiqueta del campo */
+.form-group label {
+  font-weight: 600;
+  color: #375e12;
+  margin-bottom: 6px;
+}
+
+/* Campos de texto, select y textarea */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1.8px solid #c4d6a7;
+  border-radius: 8px;
+  background-color: #fffef8;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al enfocar campos */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4a7c30;
+  box-shadow: 0 0 6px rgba(74, 124, 48, 0.3);
+}
+
+/* Ajustes para textarea */
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Botón de envío */
+.btn-submit {
+  background: linear-gradient(135deg, #4a7c30, #2e4f14);
+  color: #f0f0e8;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.4s ease, box-shadow 0.3s ease;
+  align-self: flex-start;
+}
+
+/* Hover en botón de envío */
+.btn-submit:hover {
+  background: linear-gradient(135deg, #5c9344, #3a6121);
+  box-shadow: 0 4px 12px rgba(74, 124, 48, 0.5);
+}
+
+/* Mensaje de éxito tras enviar formulario */
+.success-message {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #375e12;
+  background-color: #dbe7b6;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .contact-form {
+    min-width: 100%;
+  }
+}

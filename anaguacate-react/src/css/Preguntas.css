@@ -1,0 +1,69 @@
+/* ==========================================================================
+   === PREGUNTAS FRECUENTES (FAQ) ===
+   Estilo visual coherente con el resto del sitio
+   ========================================================================== */
+
+/* Contenedor general de la página de preguntas */
+.preguntas-page {
+  max-width: 1100px;
+  margin: 50px auto 80px;
+  padding: 2rem 1.5rem;
+  background-color: #fafaf4;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Lista que agrupa todos los items de FAQ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 1.8rem;
+}
+
+/* Caja individual de cada pregunta y respuesta */
+.faq-item {
+  background-color: #fffef8;
+  border: 1px solid #d0dd9b;
+  border-radius: 12px;
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 3px 8px rgba(95, 122, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto hover para dar interacción */
+.faq-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 14px rgba(74, 124, 48, 0.25);
+}
+
+/* Pregunta */
+.faq-pregunta {
+  color: #375e12;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  text-shadow: 1px 1px 1px #dbe7b6;
+}
+
+/* Respuesta */
+.faq-respuesta {
+  font-size: 1rem;
+  color: #3b3b1c;
+  line-height: 1.5;
+}
+
+/* Adaptación móvil */
+@media (max-width: 768px) {
+  .preguntas-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .faq-pregunta {
+    font-size: 1.1rem;
+  }
+
+  .faq-respuesta {
+    font-size: 0.95rem;
+  }
+}
